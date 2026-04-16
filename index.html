@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARAMICO - Manutenção</title>
+    <style>
+        :root {
+            --caramico-white: #ffffff;
+            --caramico-black: #000000;
+            --stage-light-warm: #ffcc66; /* Cor sutil de palco para animação */
+            --stage-light-blue: #66ccff; /* Outra cor sutil */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--caramico-black);
+            color: var(--caramico-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Evita barras de rolagem desnecessárias */
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+            position: relative;
+        }
+
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .caramico-logo {
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin: 0;
+            animation: pulse-logo 4s infinite ease-in-out;
+            position: relative;
+        }
+
+        /* Animação sutil no logotipo: pulso de luz de palco */
+        @keyframes pulse-logo {
+            0%, 100% { text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+            50% { text-shadow: 0 0 20px rgba(255,255,255,0.6), 0 0 10px rgba(255, 204, 102, 0.4); }
+        }
+
+        .instagram-handle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 10px;
+        }
+
+        .image-container {
+            margin-bottom: 50px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.05); /* Sombra suave para destacar a foto */
+            border-radius: 10px; /* Borda levemente arredondada para o contêiner */
+            overflow: hidden; /* Garante que a foto siga o contêiner */
+        }
+
+        .caramico-stage-photo {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animação sutil de 'varrer' a luz na foto */
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+            animation: sweep-light 10s infinite;
+        }
+
+        @keyframes sweep-light {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+
+        .maintenance-message {
+            margin-bottom: 60px;
+        }
+
+        .message-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .message-subtitle {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Bloco de contato original preservado */
+        .contact-block {
+            position: absolute;
+            bottom: -50px; /* Ajuste para espaçamento */
+            right: 0;
+            text-align: right;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.4;
+        }
+
+        .contact-block .name {
+            font-weight: 700;
+            color: rgba(255,255,255,0.7);
+        }
+
+        @media (max-width: 600px) {
+            .contact-block {
+                position: static;
+                text-align: center;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-section" style="display: none;">
+            <h1 class="caramico-logo">CARAMICO</h1>
+            <p class="instagram-handle">instagram: @caramico_oficial</p>
+        </div>
+
+        <div class="image-container">
+            <img src="caramicooficial.webp" alt="Caramico no Palco" class="caramico-stage-photo">
+        </div>
+
+        <div class="maintenance-message">
+            <h2 class="message-title">Estamos refinando o espetáculo digital.</h2>
+            <p class="message-subtitle">Estamos afinando as notas e ajustando os refletores. Voltaremos em breve para uma performance ainda melhor. caramicooficial.com.br</p>
+        </div>
+
+        <div class="contact-block">
+            Contato escritório: <span class="name">Marcos Caramico</span><br>
+            producao@caramicooficial.com.br<br>
+            11 96595-0788
+        </div>
+    </div>
+</body>
+</html>
