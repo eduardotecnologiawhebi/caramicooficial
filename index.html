@@ -24,6 +24,7 @@
             min-height: 100vh;
             text-align: center;
             overflow: hidden; /* Evita barras de rolagem desnecessárias */
+            position: relative; /* Adicionado para referência absoluta, se necessário */
         }
 
         .main-container {
@@ -32,6 +33,7 @@
             align-items: center;
             max-width: 90%;
             position: relative;
+            z-index: 10; /* Garante que o conteúdo fique acima das luzinhas do fundo */
         }
 
         .header-section {
@@ -130,6 +132,23 @@
             color: rgba(255,255,255,0.7);
         }
 
+        /* --- ESTILOS DO EFEITO DE PLATEIA (MODIFICADO) --- */
+        .lantern {
+            position: fixed; /* Fixed garante que cubra a tela toda, indepentente do layout central */
+            background-color: var(--stage-light-warm);
+            border-radius: 50%;
+            width: 2px;
+            height: 2px;
+            opacity: 0.2;
+            z-index: 1; /* Fica acima do fundo preto, mas abaixo do z-index: 10 do main-container */
+            animation: twinkle-lantern 6s infinite ease-in-out;
+        }
+
+        @keyframes twinkle-lantern {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.5); }
+        }
+
         @media (max-width: 600px) {
             .contact-block {
                 position: static;
@@ -161,5 +180,24 @@
             11 96595-0788
         </div>
     </div>
+
+    <script>
+        // Aumentei a quantidade para 150 para preencher toda a tela
+        for (let i = 0; i < 150; i++) {
+            const lantern = document.createElement('div');
+            lantern.classList.add('lantern');
+
+            // Posicionamento aleatório usando 'vw' (viewport width) e 'vh' (viewport height)
+            lantern.style.top = Math.random() * 100 + 'vh';
+            lantern.style.left = Math.random() * 100 + 'vw';
+
+            // Randomizar o atraso da animação para um efeito orgânico
+            const delay = Math.random() * 6;
+            lantern.style.animationDelay = delay + 's';
+
+            // Adiciona a luzinha diretamente no corpo da página (body)
+            document.body.appendChild(lantern);
+        }
+    </script>
 </body>
 </html>
